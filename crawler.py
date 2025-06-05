@@ -11,7 +11,17 @@ from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 app = FastAPI()
 
 # Shared crawler instance
-crawler = AsyncWebCrawler()
+crawler = AsyncWebCrawler(
+    playwright_browser_launch_options={
+        "headless": True,
+        "args": [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu"
+        ]
+    }
+)
 
 @app.on_event("startup")
 async def startup_event():
@@ -45,7 +55,7 @@ async def crawl_url(target_url: str):
         strategy = BestFirstCrawlingStrategy(
             max_depth=1,
             include_external=False,
-            max_pages=5,
+            max_pages=3,
             url_scorer=keyword_scorer,
             filter_chain=FilterChain([url_filter])
         )
