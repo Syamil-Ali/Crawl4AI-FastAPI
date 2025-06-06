@@ -20,7 +20,7 @@ crawler = AsyncWebCrawler(
             "--disable-dev-shm-usage", # Disable /dev/shm usage
             "--disable-gpu"  # Disable GPU acceleration
         ],
-        viewport={'width': 800, 'height': 600}  # Smaller viewport for better performance
+        #viewport={'width': 800, 'height': 600}  # Smaller viewport for better performance
     }
 )
 
