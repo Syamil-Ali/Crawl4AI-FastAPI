@@ -15,11 +15,12 @@ crawler = AsyncWebCrawler(
     playwright_browser_launch_options={
         "headless": True,
         "args": [
-            "--no-sandbox",
+            "--no-sandbox", # Required for docker
             "--disable-setuid-sandbox",
-            "--disable-dev-shm-usage",
-            "--disable-gpu"
-        ]
+            "--disable-dev-shm-usage", # Disable /dev/shm usage
+            "--disable-gpu"  # Disable GPU acceleration
+        ],
+        viewport={'width': 800, 'height': 600}  # Smaller viewport for better performance
     }
 )
 
