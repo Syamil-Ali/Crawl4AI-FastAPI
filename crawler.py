@@ -19,6 +19,7 @@ crawler = AsyncWebCrawler(
             "--disable-setuid-sandbox",
             "--disable-dev-shm-usage", # Disable /dev/shm usage
             "--disable-gpu"  # Disable GPU acceleration
+            "--disable-features=CookiesSetting"
         ],
         #viewport={'width': 800, 'height': 600}  # Smaller viewport for better performance
     }
@@ -69,7 +70,9 @@ async def crawl_url(target_url: str):
             remove_overlay_elements=True,
             process_iframes=True,
             markdown_generator=md_generator,
-            deep_crawl_strategy=strategy
+            deep_crawl_strategy=strategy,
+            remove_forms = True,
+            excluded_selector = '[class*="cookie" i], [id*="cookie" i]'
         )
 
         results = await crawler.arun(target_url, config=config)
