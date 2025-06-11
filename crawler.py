@@ -72,7 +72,8 @@ async def crawl_url(target_url: str):
             markdown_generator=md_generator,
             deep_crawl_strategy=strategy,
             remove_forms = True,
-            excluded_selector = '[class*="cookie" i], [id*="cookie" i]'
+            excluded_selector = '[class*="cookie" i], [id*="cookie" i]',
+            timeout=30,  # 30 seconds
         )
 
         results = await crawler.arun(target_url, config=config)
