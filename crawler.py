@@ -72,6 +72,7 @@ async def crawl_url(target_url: str):
             markdown_generator=md_generator,
             deep_crawl_strategy=strategy,
             remove_forms = True,
+            cache_mode=CacheMode.DISABLED,
             excluded_selector = '[class*="cookie" i], [id*="cookie" i]',
             #timeout=30,  # 30 seconds
         )
@@ -95,3 +96,4 @@ async def crawl_url(target_url: str):
     except Exception as e:
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+
