@@ -1,0 +1,33 @@
+{
+        "name": "Google Search Result",
+        "baseSelector": "div.MjjYud",    
+        "fields": [
+            {
+                "name": "Title",
+                "selector": "h3.LC20lb.MBeuO.DKV0Md",
+                "type": "text"
+            },
+            {
+                "name": "Description 1",
+                "selector": "div.YrbPuc",
+                "type": "text"
+            },
+            {
+                "name": "Description 2",
+                "selector": "div.VwiC3b.yXK7lf.p4wth.r025kc.Hdw6tb",
+                "type": "text"
+            },
+            {
+                "name": "Source",
+                "selector": "span.VuuXrf",
+                "type": "text"
+            },
+
+            {
+                "name": "URL",
+                "selector": "a.zReHs",
+                "type": "attribute", 
+                "attribute": "href"
+            }
+        ]
+    }
